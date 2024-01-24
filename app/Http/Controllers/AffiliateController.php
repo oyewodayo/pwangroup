@@ -85,9 +85,13 @@ class AffiliateController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $name, string $id)
     {
-        //
+        
+        $affiliate = Affiliate::find($id);
+  
+
+        return view('affiliates.edit',compact('affiliate'));
     }
 
     /**
@@ -103,6 +107,15 @@ class AffiliateController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $affiliate = Affiliate::find($id);
+
+        if ($affiliate) {
+            $affiliate->delete();
+
+            return back()->with('success','Selected affiliate successfully deleted.'); 
+        }
+
+        return back()->with('error','Affiliate not found.'); 
+
     }
 }

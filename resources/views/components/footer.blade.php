@@ -6,7 +6,7 @@
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
            
-            <p><img src="assets/img/logo-ext.png" width="200px" alt="Logo"></p>
+            <p><img src="{{asset('assets/img/pwanhomes-logo.png')}}" width="200px" alt="Logo"></p>
            
           </div>
 

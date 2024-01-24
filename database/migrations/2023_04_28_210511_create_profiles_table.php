@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('religion');
             $table->string('state_of_origin');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

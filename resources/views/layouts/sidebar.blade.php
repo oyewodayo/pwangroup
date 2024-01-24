@@ -44,7 +44,7 @@
             </div>
         </div>
     </li>
-   
+
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStaff"
             aria-expanded="true" aria-controls="collapseStaff">
@@ -62,21 +62,57 @@
         </div>
     </li>
     <hr class="sidebar-divider">
-    <!-- Nav Item - Utilities Collapse Menu -->
-  
+
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAffiliate"
-            aria-expanded="true" aria-controls="collapseAffiliate">
-            <i class="fas fa-fw fa-book"></i>
-            <span>Affiliate</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEstates"
+            aria-expanded="true" aria-controls="collapseEstates">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Estates</span>
         </a>
-        <div id="collapseAffiliate" class="collapse" aria-labelledby="headingAffiliate"
+        <div id="collapseEstates" class="collapse" aria-labelledby="headingAppraisals" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Estates Components:</h6>
+
+                <a class="collapse-item" href="{{route('estate.create')}}">Create Estate</a>
+                <a class="collapse-item" href="{{route('region.create')}}">Create Region</a>
+                <a class="collapse-item" href="{{route('region.index')}}">View Regions</a>
+                <a class="collapse-item" href="{{route('region.create')}}">View Estates</a>
+                
+            </div>
+        </div>
+    </li>
+   
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInspections"
+            aria-expanded="true" aria-controls="collapseInspections">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Inspections</span>
+        </a>
+        <div id="collapseInspections" class="collapse" aria-labelledby="headingInspections"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Affiliate Components:</h6>
-                <a class="collapse-item" href="{{route('backoffice.affiliates')}}">Active</a>
-                <a class="collapse-item" href="">Inactive</a>
-                <a class="collapse-item" href="{{route('backoffice.affiliates.create')}}">Create new</a>
+                <h6 class="collapse-header">Inspection Components:</h6>
+                <a class="collapse-item" href="{{route('backoffice.affiliates')}}">New Inspections</a>
+                <a class="collapse-item" href="">Completed Inspections</a>
+            </div>
+        </div>
+    </li>
+
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAllocations"
+            aria-expanded="true" aria-controls="collapseAllocations">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Allocation</span>
+        </a>
+        <div id="collapseAllocations" class="collapse" aria-labelledby="headingAllocations"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Allocation Components:</h6>
+                <a class="collapse-item" href="{{route('backoffice.affiliates')}}">Manage allocations</a>
+                <a class="collapse-item" href="">Allocated</a>
+                <a class="collapse-item" href="{{route('backoffice.affiliates.create')}}">Not Allocated</a>
             </div>
         </div>
     </li>
@@ -110,8 +146,25 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Department Components:</h6>
-                <a class="collapse-item" href="">View departments</a>
-                <a class="collapse-item" href="">Create new</a>
+                <a class="collapse-item" href="{{route('backoffice.department')}}">View departments</a>
+                <a class="collapse-item" href="{{route('backoffice.department.create')}}">Create new</a>
+            </div>
+        </div>
+    </li>
+
+    <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFlyer"
+            aria-expanded="true" aria-controls="collapseFlyer">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Flyers</span>
+        </a>
+        <div id="collapseFlyer" class="collapse" aria-labelledby="headingFlyer"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Flyers Components:</h6>
+                <a class="collapse-item" href="{{route('backoffice.flyers')}}">View flyers</a>
+                <a class="collapse-item" href="{{route('backoffice.flyers.create')}}">Create flyer</a>
             </div>
         </div>
     </li>
@@ -144,12 +197,10 @@
     <hr class="sidebar-divider">
     <!-- Nav Item - Tables -->
     <li class="nav-item ">
-        <div class="d-flex">
+        <div>
             <i class="fas fa-sign-out-alt fa-sm fa-fw text-gray-400 ml-3"></i>
-            <form method="POST" action="{{ route('logout') }}" class="" style="margin-top:-12px">
-                @csrf
-                <button type="submit" class="btn btn-link text-danger">Log out</button>
-            </form>
+          
+            <a class="collapse-item text-white" href="#" data-toggle="modal" data-target="#logout">Logout</a>
         </div>
     </li>
 
@@ -163,3 +214,34 @@
 
    
 </ul> 
+
+<div class="modal fade" id="logout" role="dialog" data-backdrop="static" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="text-bold-900 text-primary">Logout.</h5>
+               
+                <button type="button" class="close text-danger" data-dismiss="modal">
+                    <span class='bx bx-x bx-sm text-danger'></span>
+                </button>
+             
+            </div>
+            <div class="modal-body">
+                <div>
+                    Are you sure you want to Logout
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                {{-- @csrf --}}
+                <button type="button" class="btn  btn-sm btn-light-secondary" data-dismiss="modal">                    
+                    Close
+                </button>  
+                <form method="POST" action="{{ route('logout') }}" class="" style="margin-top:-12px">
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Log out</button>
+                </form>                
+            </div>
+        </div>
+    </div>
+  </div>

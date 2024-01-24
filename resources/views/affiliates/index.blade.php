@@ -11,7 +11,7 @@
     </div>
 
     <!-- Content Row -->
-
+    @include('errors.error_message')
     <div class="row">
       @forelse ($affiliates as $affiliate)
       <div class=" col-md-4 mb-5">
@@ -60,13 +60,47 @@
                   @endswitch
                 </div>
 
-                <div class="mt-4">
-                  <a href="" class="btn btn-primary btn-sm">Edit</a>
-                  <a href="" class="btn btn-danger btn-sm">Delete</a>
+                <div class="mt-4 d-flex">
+                  <a href="{{route('backoffice.affiliates.edit',['name'=>$affiliate->name,'id'=>$affiliate->id])}}" class="btn btn-primary btn-sm mr-1">Edit</a>
+                  <a href="#" data-toggle="modal" data-target="#delete-affiliate" class="btn btn-danger btn-sm mr-1">Delete</a>
+                
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="delete-affiliate" role="dialog" data-backdrop="static" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-bold-900 text-primary">Affiliate.</h5>
+                   
+                    <button type="button" class="close text-danger" data-dismiss="modal">
+                        <span class='bx bx-x bx-sm text-danger'></span>
+                    </button>
+                 
+                </div>
+                <div class="modal-body">
+                    <div>
+                        Are you sure you want to delete  <span class="text-primary">{{$affiliate->name}}</span>?
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    {{-- @csrf --}}
+                    <button type="button" class="btn  btn-sm btn-light-secondary" data-dismiss="modal">                    
+                        Close
+                    </button>  
+                    <form action="{{route('backoffice.affiliates.destroy',$affiliate->id)}}" method="post">
+                      @csrf
+                      @method('DELETE')
+                      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>                 
+                </div>
+            </div>
         </div>
       </div>
       @empty

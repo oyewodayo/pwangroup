@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->nullable();
+            $table->string('reference', 100);
+            $table->string('name', 100);
+            $table->string('slug', 100)->nullable();
+            $table->longText('description')->nullable();
+            $table->boolean('status')->nullable()->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
